@@ -28,17 +28,65 @@ console.log("dropdown results: ", dropResult)
     
   }
 
-  function priceLTH (array){
-    
+  function priceLTH (){
+    if(resultArray.length === 0){
+      const lthData = [...productList].sort((a,b) => {
+        return a.price > b.price ? 1: -1
+      })
+      setDropResult(lthData)
+    }
+    else{
+      const lthData = [...resultArray].sort((a,b) => {
+        return a.price > b.price ? 1: -1
+      })
+      setDropResult(lthData)
+    }
   }
-  function priceHTL (array){
-   
+  function priceHTL (){
+    if(resultArray.length === 0){
+      const lthData = [...productList].sort((a,b) => {
+        return a.price < b.price ? 1: -1
+      })
+      setDropResult(lthData)
+    }
+    else{
+      const lthData = [...resultArray].sort((a,b) => {
+        return a.price < b.price ? 1: -1
+      })
+      setDropResult(lthData)
+    }
   }
-  function alphaATZ (array){
-    
+  function alphaATZ (){
+    if(resultArray.length === 0){
+      const lthData = [...productList].sort((a,b) => {
+        return a.title > b.title ? 1: -1
+      })
+      setDropResult(lthData)
+    }
+    else{
+      const lthData = [...resultArray].sort((a,b) => {
+        return a.title > b.title ? 1: -1
+      })
+      setDropResult(lthData)
+    }
   }
-  function alphaZTA (array){
-    
+  function alphaZTA (){
+    if(resultArray.length === 0){
+      const lthData = [...productList].sort((a,b) => {
+        return a.title < b.title ? 1: -1
+      })
+      setDropResult(lthData)
+    }
+    else{
+      const lthData = [...resultArray].sort((a,b) => {
+        return a.title < b.title ? 1: -1
+      })
+      setDropResult(lthData)
+    }
+  }
+  function clearFilters(){
+    setDropResult([]);
+    setResultArray([]);
   }
 console.log("product list: ",productList)
 console.log("results product list: ",resultArray)
@@ -53,10 +101,11 @@ console.log("dropdown results: ", dropResult)
         </label>
       </div>
           <div id="myDropdown" className="dropdown-content">
-            <button onClick={ resultArray.length === 0 ?(priceLTH(productList)):(priceLTH(resultArray))}>Price: Lowest to Highest</button>
-            <button onClick={ resultArray.length === 0 ?(priceHTL(productList)):(priceHTL(resultArray))}>Price: Highest to Lowest</button>
-            <button onClick={ resultArray.length === 0 ?(alphaATZ(productList)):(alphaATZ(resultArray))}>Alphabetical Order (A-Z)</button>
-            <button onClick={ resultArray.length === 0 ?(alphaZTA(productList)):(alphaZTA(resultArray))}>Alphabetical Order (Z-A)</button>
+            <button onClick={priceLTH}>Price: Lowest to Highest</button>
+            <button onClick={priceHTL}>Price: Highest to Lowest</button>
+            <button onClick={alphaATZ}>Alphabetical Order (A-Z)</button>
+            <button onClick={alphaZTA}>Alphabetical Order (Z-A)</button>
+            <button onClick={clearFilters}>Clear Filters</button>
           </div>
       <div>
           <h2>Products</h2>
