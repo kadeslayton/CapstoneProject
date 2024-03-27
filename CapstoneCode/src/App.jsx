@@ -3,10 +3,9 @@ import Navigation from "./components/Navigations";
 import SingleProduct from "./components/SingleProduct";
 import Homepage from "./Pages/Homepage";
 import AccountPage from "./Pages/AccountPage";
-import ProductsPage from "./Pages/ProductsPage";
 import Header from "./components/Header";
-import AvailableProductsPage from "./Pages/AvailableProductsPage";
 import './index.css'
+import CartPage from "./Pages/CartPage";
 
 function App() {
   return (
@@ -16,10 +15,9 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:id" element={<SingleProduct />} />
-          <Route path="/availableproducts" element={<AvailableProductsPage />} />
           <Route path="/account" element={<AccountPage />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </BrowserRouter>
     </>

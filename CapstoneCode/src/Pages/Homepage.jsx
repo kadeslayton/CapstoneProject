@@ -15,6 +15,8 @@ export default function Homepage() {
     }
     retrieveList();
   }, []);
+
+  console.log("Homepage PL: ", productList)
   return (
     <>
       <h2 className="header">Welcome to our store!</h2>

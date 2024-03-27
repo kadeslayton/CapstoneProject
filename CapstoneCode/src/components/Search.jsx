@@ -1,18 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductPreview from "./ProductPreview";
 
 export default function Search({ productList }) {
   const [resultArray, setResultArray] = useState([]);
+  const [dropResult, setDropResult] = useState([]);
+  console.log("product list: ",productList)
+console.log("results product list: ",resultArray)
+console.log("dropdown results: ", dropResult)
 
   function handleSearch(e) {
-    let searchResults = productList.filter((product) =>
+    if(dropResult.length === 0){
+      let searchResults = productList.filter((product) =>
       product.title.toLowerCase().includes(e.target.value.toLowerCase())
     );
     searchResults.length > 0
       ? setResultArray(searchResults)
       : setResultArray(["No Results"]);
+    }
+    else{
+      let searchResults = dropResult.filter((product) =>
+      product.title.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    searchResults.length > 0
+      ? setResultArray(searchResults)
+      : setResultArray(["No Results"]);
+    }
+    
   }
 
+  function priceLTH (array){
+    
+  }
+  function priceHTL (array){
+   
+  }
+  function alphaATZ (array){
+    
+  }
+  function alphaZTA (array){
+    
+  }
+console.log("product list: ",productList)
+console.log("results product list: ",resultArray)
+console.log("dropdown results: ", dropResult)
   return (
     <div id="search-results">
       <div className="search-bar">
@@ -22,22 +52,53 @@ export default function Search({ productList }) {
           <input type="text" placeholder="Search" onChange={handleSearch} />
         </label>
       </div>
-      {resultArray != 0 && (
-        <>
-          <h2>Search Results</h2>
-          <div>
-            {resultArray[0] === "No Results" ? (
-              <p>No Results</p>
-            ) : (
-              <ul>
-                {resultArray.map((product, index) => {
-                  return <ProductPreview key={index} product={product} />;
-                })}
-              </ul>
-            )}
+          <div id="myDropdown" className="dropdown-content">
+            <button onClick={ resultArray.length === 0 ?(priceLTH(productList)):(priceLTH(resultArray))}>Price: Lowest to Highest</button>
+            <button onClick={ resultArray.length === 0 ?(priceHTL(productList)):(priceHTL(resultArray))}>Price: Highest to Lowest</button>
+            <button onClick={ resultArray.length === 0 ?(alphaATZ(productList)):(alphaATZ(resultArray))}>Alphabetical Order (A-Z)</button>
+            <button onClick={ resultArray.length === 0 ?(alphaZTA(productList)):(alphaZTA(resultArray))}>Alphabetical Order (Z-A)</button>
           </div>
-        </>
-      )}
+      <div>
+          <h2>Products</h2>
+          <div>
+            {resultArray.length === 0 && dropResult.length===0 ? (
+              <div>
+                <ul className="initialArrayProds">
+                  {productList.map((product, index) => {
+                    return <ProductPreview key={index} product={product} />;
+                  })}
+                </ul>
+              </div>
+            ):(    
+              <div>
+                {resultArray.length === 0 && dropResult.length!==0 ? (
+                <div>
+                  <ul>
+                  {dropResult.map((product, index) => {
+                    return <ProductPreview key={index} product={product} />;
+                  })}
+                </ul>
+                </div>
+                ) : (
+                  <div>
+                    {resultArray[0] === `No Results`?
+                    (
+                      <p>No Matching Results</p>
+                    ):(
+                      <div>
+                          <ul>
+                        {resultArray.map((product, index) => {
+                          return <ProductPreview key={index} product={product} />;
+                        })}
+                        </ul>
+                      </div> 
+                    )}
+                  </div>            
+                )}
+              </div>
+            )}
+          </div>  
+      </div>
     </div>
   );
 }

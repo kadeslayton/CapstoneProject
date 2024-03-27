@@ -7,12 +7,11 @@ export default function Navigation() {
   return (
     <nav>
       <Link to="/">
-        <span className="material-symbols-outlined">search</span>
+        <span className="material-symbols-outlined">Homepage</span>
       </Link>
-      <Link to="/products">See All Products</Link>
+      <Link to="/cart">Cart</Link>
       {userKey ? (
         <>
-          <Link to="/availableproducts">Available Products</Link>
           <Link to="/account">Account</Link>
         </>
       ) : (

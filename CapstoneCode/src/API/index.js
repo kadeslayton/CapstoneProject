@@ -6,6 +6,7 @@ export async function getAllProducts() {
       headers: { "Content-Type": "application/json" },
     });
     const prodsArray = await response.json();
+    console.log("API Index: ", prodsArray)
     return prodsArray;
   } catch (error) {
     console.log(error);

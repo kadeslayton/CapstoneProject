@@ -1,6 +1,6 @@
 body {
   font-family: "Goudy Bookletter 1911", serif;
-  background-color: #f8f8f8;
+  background-color: #f6e0ab;
   margin: 0;
   padding: 0;
 }
@@ -9,11 +9,30 @@ input {
   margin-left: 5px;
 }
 
-h2 {
-  margin-top: 35px;
-  margin-bottom: 0;
+h1{
+  font-size: xxx-large;
+  text-align: center;
+  margin-bottom: 50px;
+  text-decoration: underline;
+  color: brown;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
-
+h2 {
+  font-size: xx-large;
+  text-align: center;
+  margin-top: 100px;
+  text-decoration: underline;
+  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 h3 {
   margin-top: 5px;
 }
@@ -23,16 +42,7 @@ h3 {
   margin-right: 10px;
 }
 
-/* Header */
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 40px;
-}
-
-/* Books */
+/* products */
 
 .book-preview {
   list-style: none;
@@ -130,17 +140,33 @@ form label {
 #search-results li,
 #search-results div,
 #search-results div ul,
-.book-section,
+#search-results div p,
+.product-section,
 .account-info ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  /* width: 90%; */
+  width: 100%;
+}
+
+#search-results div ul li{
+  border: black 5px solid;
+margin: 5px;
+padding: 5px;
+height: 600px;
+
+
 }
 
 #search-results li {
-  width: 200px;
+  width: 300px;
+  background-color: antiquewhite;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 /* #search-results li a {
@@ -148,8 +174,10 @@ form label {
 } */
 
 #search-results li a img {
-  width: 80%;
+  width: 100%;
+  max-height: 400px;
 }
+
 
 /* Add your own custom styles here */
 
@@ -170,3 +198,4 @@ form label {
     width: 80%;
   }
 }
+

@@ -1,6 +1,7 @@
 import ProductPreview from "./ProductPreview";
 
 export default function AvailableProducts({ products }) {
+  
   return (
     <div className="product-section">
       <h2>You can purchase these items now!!</h2>

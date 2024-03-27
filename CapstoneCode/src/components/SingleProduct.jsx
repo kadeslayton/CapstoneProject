@@ -7,7 +7,7 @@ export default function SingleProduct() {
   const locationInfo = useLocation();
   const product = locationInfo.state.product;
   const {  price,image, category, title, id, description } = product;
-  const [available, setAvailable] = useState(book.available);
+  const [available, setAvailable] = useState(product.available);
   const [userKey, setUserKey] = useState(() =>
     localStorage.getItem("current-user-key")
   );
