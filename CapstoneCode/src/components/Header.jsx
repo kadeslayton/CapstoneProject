@@ -1,8 +1,9 @@
 
 export default function Header() {
-  const userKey = localStorage.getItem("current-user-key");
+  const userKey = localStorage.getItem("current-user-keys");
+  console.log(userKey)
   function logOut() {
-    localStorage.setItem("current-user-key", "");
+    localStorage.removeItem("current-user-keys");
     location.reload();
   }
   return (
@@ -10,12 +11,12 @@ export default function Header() {
       <h1>
         Store App
       </h1>
-      {userKey && (
+    
         <button onClick={logOut}>
           Logout
-          <span class="material-symbols-outlined">logout</span>
+          <span className="material-symbols-outlined"></span>
         </button>
-      )}
+  
     </div>
   );
 }

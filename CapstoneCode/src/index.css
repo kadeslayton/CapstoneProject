@@ -35,7 +35,17 @@ h2 {
 }
 h3 {
   margin-top: 5px;
+  display: inline;
+  text-align: center;
 }
+.previewTitle{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  
+}
+
 
 #logo-image {
   width: 30px;
@@ -74,11 +84,11 @@ h3 {
 
 /* SINGLE BOOK */
 
-.single-book {
+.single-product {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  background-color: antiquewhite;
   text-align: center;
   margin-top: 25px;
 }
@@ -86,12 +96,14 @@ h3 {
 .info {
   width: 35%;
 }
-.book-cover {
+.product-cover {
   width: 55%;
 }
 
-.book-cover img {
+.single-product img {
   height: 600px;
+  margin-top: 30px;
+  border: 5px solid black
 }
 
 nav {

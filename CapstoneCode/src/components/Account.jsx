@@ -6,8 +6,9 @@ export default function Account() {
   const [userInfoArray, setUserInfoArray] = useState([]);
 
   useEffect(() => {
-    async function getUserInfo() {
-      const id = localStorage.getItem("current-user-key");
+    async function retrieveUserInfo() {
+      const id = localStorage.getItem("current-user-keys");
+      console.log(id)
       try {
         const userInfoApi = await getUserInfo(id);
         setUserInfoArray(userInfoApi);
@@ -15,16 +16,22 @@ export default function Account() {
         console.log(error);
       }
     }
-    getUserInfo();
+    retrieveUserInfo();
+    
   }, []);
-
+console.log(userInfoArray)
 
   return (
     <div className="account-info">
-      <h1>Account Info</h1>
-      <p>First Name: {userInfoArray.firstname}</p>
-      <p>Last Name: {userInfoArray.lastname}</p>
-      <p>Email: {userInfoArray.email}</p>
+
+      <p>{userInfoArray.address}</p>
+      <p>{userInfoArray.id}</p>
+      <p>{userInfoArray.email}</p>
+      <p>{userInfoArray.username}</p>
+      <p>{userInfoArray.password}</p>
+      <p>{userInfoArray.name}</p>
+      <p>{userInfoArray.phone}</p>
+      
     </div>
   );
 }

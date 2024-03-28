@@ -2,8 +2,8 @@
 import { Link } from "react-router-dom";
 
 export default function Navigation() {
-  const userKey = localStorage.getItem("current-user-key");
-
+  const userKey = localStorage.getItem("current-user-keys");
+  console.log(userKey, typeof userKey)
   return (
     <nav>
       <Link to="/">

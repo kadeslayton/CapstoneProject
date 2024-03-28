@@ -5,8 +5,8 @@ export default function ProductPreview({product }) {
   return (
     <li>
       <Link to={{ pathname: `/products/${id}` }} state={{ product }}>
-        <h3>{title}</h3>
-        <p>{price}</p>
+        <h3 className="previewTitle">{title}</h3>
+        <p>${price}</p>
         <p>{category}</p>
         <img src={image} alt={`${title}`} />
       </Link>

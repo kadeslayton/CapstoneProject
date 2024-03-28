@@ -14,29 +14,69 @@ export async function getAllProducts() {
 }
 
 
-export async function apiLogIn(username, password) {
+export async function apiLogIn({username, password}) {
   try {
-    const response = await fetch(`${baseUrl}/users/login`, {
+    console.log(JSON.stringify({
+      username: username,
+      password: password
+    }))
+    const response = await fetch(`${baseUrl}/auth/login`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify({
-        username: `${username}`,
-        password: `${password}`
+        username: username,
+        password: password
       }),
+      headers: { "Content-Type": "application/json" },
     });
     const json = await response.json();
+    console.log("API Login: ", json)
     return json;
   } catch (error) {
     console.log(error);
   }
 }
 
+export async function apiRegister(username, password, email, firstname, lastname) {
+
+  try{const response = await fetch('https://fakestoreapi.com/users',{
+            method:"POST",
+            body:JSON.stringify(
+                {
+                    email:`${email}`,
+                    username:`${username}`,
+                    password:`${password}`,
+                    name:{
+                        firstname:`${firstname}`,
+                        lastname:`${lastname}`
+                    },
+                    address:{
+                      city:'kilcoole',
+                      street:'7835 new road',
+                      number:3,
+                      zipcode:'12926-3874',
+                      geolocation:{
+                          lat:'-37.3159',
+                          long:'81.1496'
+                      }
+                  },
+                  phone:'1-570-236-7033'
+                }
+            )
+        })
+        const json = await response.json();
+        console.log("API Register (js): ", json)
+    return json;
+  }catch(error){
+    console.log(error);
+  }
+}
+
+
 export async function getUserInfo(id) {
   try {
     const response = await fetch(`${baseUrl}/users/${id}`);
     const json = await response.json();
+    console.log(json)
     return json;
   } catch (error) {
     console.log(error);
