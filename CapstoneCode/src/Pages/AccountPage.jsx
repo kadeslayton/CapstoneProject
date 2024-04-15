@@ -7,7 +7,6 @@ export default function AccountPage() {
     <div className="account-section">
       {userKey ? (
         <div>
-          <p>{userKey}</p>
           <Account />
         </div>
       ) : (

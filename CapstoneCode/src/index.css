@@ -54,36 +54,35 @@ h3 {
 
 /* products */
 
-.book-preview {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+.cartProds ul li
+{
+  display:flex;
   flex-wrap: wrap;
-  margin-top: 0;
-  padding: 0;
-  width: 95%;
-}
-
-.book-preview li {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  width: 23%;
   text-align: center;
+  text-decoration: underline;
+  border: black 5px solid;
+  margin: 5px;
+  padding: 5px;
+  height: 700px;
+  width: 300px;
+  background-color: antiquewhite;
+}
+.cartProds ul li img{
+  
+  width: 300px;
+  margin-top: 30px;
+  max-height: 400px;
 }
 
-.book-preview p {
-  margin-top: 0;
+.cartProds ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
-
-.book-preview img {
-  width: 250px;
-}
-
-/* SINGLE BOOK */
-
 .single-product {
   display: flex;
   justify-content: center;
@@ -126,12 +125,24 @@ form {
   justify-content: center;
   align-items: center;
   margin-top: 15px;
+
 }
 
 .account-info {
-  width: 90%;
-}
+  width: 100%;
 
+
+}
+.account-info tbody td{
+ padding: 10px;
+ align-items: center;
+ 
+}
+.account-info tbody{
+  border: 5px black solid;
+  justify-content: center;
+  margin-top: 15px;
+ }
 form label {
   margin: 5px;
 }
@@ -168,7 +179,6 @@ margin: 5px;
 padding: 5px;
 height: 600px;
 
-
 }
 
 #search-results li {
@@ -181,33 +191,27 @@ height: 600px;
   
 }
 
-/* #search-results li a {
-  width: 200px;
-} */
-
 #search-results li a img {
   width: 100%;
   max-height: 400px;
 }
 
-
-/* Add your own custom styles here */
-
-@media (max-width: 1250px) {
-  .book-preview li {
-    width: 33%;
-  }
+.logout-btn,
+.checkout-btn{
+  width: 100px;
+  height: 40px;
+  text-decoration: underline;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-@media (max-width: 850px) {
-  .book-preview li {
-    width: 43%;
-  }
+.logout-btn{
+  margin-left: 100px;
 }
 
-@media (max-width: 600px) {
-  .book-preview li {
-    width: 80%;
-  }
+.checkout-btn{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 200px;
 }
 

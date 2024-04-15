@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ProductPreview from "./ProductPreview";
 
-export default function Search({ productList }) {
+export default function Search({ productList, setCart, cart }) {
   const [resultArray, setResultArray] = useState([]);
   const [dropResult, setDropResult] = useState([]);
-  console.log("product list: ",productList)
-console.log("results product list: ",resultArray)
-console.log("dropdown results: ", dropResult)
+
 
   function handleSearch(e) {
     if(dropResult.length === 0){
@@ -88,9 +86,7 @@ console.log("dropdown results: ", dropResult)
     setDropResult([]);
     setResultArray([]);
   }
-console.log("product list: ",productList)
-console.log("results product list: ",resultArray)
-console.log("dropdown results: ", dropResult)
+console.log("Search Cart", cart)
   return (
     <div id="search-results">
       <div className="search-bar">
@@ -114,7 +110,7 @@ console.log("dropdown results: ", dropResult)
               <div>
                 <ul className="initialArrayProds">
                   {productList.map((product, index) => {
-                    return <ProductPreview key={index} product={product} />;
+                    return <ProductPreview key={index} product={product} setCart={setCart} cart={cart}/>;
                   })}
                 </ul>
               </div>
@@ -124,7 +120,7 @@ console.log("dropdown results: ", dropResult)
                 <div>
                   <ul>
                   {dropResult.map((product, index) => {
-                    return <ProductPreview key={index} product={product} />;
+                    return <ProductPreview key={index} product={product} setCart={setCart} cart={cart}/>;
                   })}
                 </ul>
                 </div>
@@ -137,7 +133,7 @@ console.log("dropdown results: ", dropResult)
                       <div>
                           <ul>
                         {resultArray.map((product, index) => {
-                          return <ProductPreview key={index} product={product} />;
+                          return <ProductPreview key={index} product={product} setCart={setCart} cart={cart}/>;
                         })}
                         </ul>
                       </div> 

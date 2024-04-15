@@ -13,13 +13,21 @@ export async function getAllProducts() {
   }
 }
 
+export async function getSingleProducts({id}) {
+  try {
+    const response = await fetch(`${baseUrl}/products/${id}`, {
+      headers: { "Content-Type": "application/json" },
+    });
+    const prodsArray = await response.json();
+    console.log("API Index Single: ", prodsArray)
+    return prodsArray;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export async function apiLogIn({username, password}) {
   try {
-    console.log(JSON.stringify({
-      username: username,
-      password: password
-    }))
     const response = await fetch(`${baseUrl}/auth/login`, {
       method: "POST",
       body: JSON.stringify({
@@ -29,52 +37,28 @@ export async function apiLogIn({username, password}) {
       headers: { "Content-Type": "application/json" },
     });
     const json = await response.json();
-    console.log("API Login: ", json)
     return json;
   } catch (error) {
     console.log(error);
   }
 }
 
-export async function apiRegister(username, password, email, firstname, lastname) {
-
-  try{const response = await fetch('https://fakestoreapi.com/users',{
-            method:"POST",
-            body:JSON.stringify(
-                {
-                    email:`${email}`,
-                    username:`${username}`,
-                    password:`${password}`,
-                    name:{
-                        firstname:`${firstname}`,
-                        lastname:`${lastname}`
-                    },
-                    address:{
-                      city:'kilcoole',
-                      street:'7835 new road',
-                      number:3,
-                      zipcode:'12926-3874',
-                      geolocation:{
-                          lat:'-37.3159',
-                          long:'81.1496'
-                      }
-                  },
-                  phone:'1-570-236-7033'
-                }
-            )
-        })
-        const json = await response.json();
-        console.log("API Register (js): ", json)
-    return json;
-  }catch(error){
-    console.log(error);
-  }
-}
 
 
 export async function getUserInfo(id) {
   try {
     const response = await fetch(`${baseUrl}/users/${id}`);
+    const json = await response.json();
+    console.log(json)
+    return json;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getAllUserInfo() {
+  try {
+    const response = await fetch(`${baseUrl}/users`);
     const json = await response.json();
     console.log(json)
     return json;
@@ -102,7 +86,7 @@ export async function AddNewCart(userId, products, date) {
   }
 }
 
-export async function GetSingleCart(id) {
+export async function GetSingleCart({id}) {
   try {
     const response = await fetch(`${baseUrl}/carts/${id}`);
     const json = await response.json();
@@ -133,7 +117,7 @@ export async function DeleteCart(id) {
   }
 }
 
-export async function addToCart(id) {
+export async function addToCart(userId, products, date, id) {
   try {
     fetch(`${baseUrl}/carts/${id}`,{
       method:"PATCH",

@@ -1,37 +1,61 @@
 
 import { useEffect, useState } from "react";
-import { getUserInfo } from "../API/index";
+import { getUserInfo, getAllUserInfo } from "../API/index";
+
 
 export default function Account() {
   const [userInfoArray, setUserInfoArray] = useState([]);
+ const [allUsers, setAllUsers] = useState([])
+ const [userAddress, setUserAddress] = useState([])
 
   useEffect(() => {
-    async function retrieveUserInfo() {
-      const id = localStorage.getItem("current-user-keys");
-      console.log(id)
-      try {
-        const userInfoApi = await getUserInfo(id);
-        setUserInfoArray(userInfoApi);
-      } catch (error) {
+    async function retrieveAllUsers(){
+      try{
+        const allUsersApi = await getAllUserInfo();
+        setAllUsers(allUsersApi);
+      } 
+      catch(error){
         console.log(error);
       }
     }
-    retrieveUserInfo();
-    
+    retrieveAllUsers();
   }, []);
-console.log(userInfoArray)
 
+  useEffect(()=>{
+    async function matchUser(){
+      const username= localStorage.getItem("current-user-name")
+      try{
+        for(let i = 0;i < allUsers.length; i++){
+          if(allUsers[i].username===username){
+            localStorage.setItem("current-user-id", allUsers[i].id)
+            setUserInfoArray(allUsers[i])
+            if(userInfoArray.address != undefined){
+            return setUserAddress(userInfoArray.address)
+            } 
+          }
+        }
+      }catch(error){
+        console.log(error)
+      }
+    }
+    matchUser();
+    
+  })
+  console.log(userInfoArray)
+  
   return (
-    <div className="account-info">
-
-      <p>{userInfoArray.address}</p>
-      <p>{userInfoArray.id}</p>
-      <p>{userInfoArray.email}</p>
-      <p>{userInfoArray.username}</p>
-      <p>{userInfoArray.password}</p>
-      <p>{userInfoArray.name}</p>
-      <p>{userInfoArray.phone}</p>
-      
+    <div>
+      <h2>User Information</h2>
+     <table className="account-info">
+      <tbody>
+        <tr><td>User ID:</td><td>{userInfoArray.id}</td></tr>
+        <tr><td>Email:</td><td>{userInfoArray.email}</td></tr>
+        <tr><td>Username:</td><td>{userInfoArray.username}</td></tr>
+        <tr><td>Address:</td><td>{userAddress.number}&nbsp;{userAddress.street}<br></br>{userAddress.city}, USA<br></br>{userAddress.zipcode}</td></tr>
+        <tr><td>Phone Number:</td><td>{userInfoArray.phone}</td></tr>
+      </tbody>
+    </table> 
     </div>
+    
   );
 }
